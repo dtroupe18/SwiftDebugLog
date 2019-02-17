@@ -1,0 +1,16 @@
+PODS:
+  - SwiftDebugLog (0.1.0)
+
+DEPENDENCIES:
+  - SwiftDebugLog (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftDebugLog:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftDebugLog: b0581cd0e4b616e51275ea3fcc36dd5642cc1efd
+
+PODFILE CHECKSUM: 339ac74aadddf3d84e027d83d934fc2ede5a4a95
+
+COCOAPODS: 1.6.0

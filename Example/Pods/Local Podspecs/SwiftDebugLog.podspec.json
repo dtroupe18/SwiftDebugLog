@@ -1,0 +1,22 @@
+{
+  "name": "SwiftDebugLog",
+  "version": "0.1.0",
+  "summary": "A short description of SwiftDebugLog.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Dtroupe18/SwiftDebugLog",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dtroupe18": "dave.troupe@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Dtroupe18/SwiftDebugLog.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SwiftDebugLog/Classes/**/*"
+}
