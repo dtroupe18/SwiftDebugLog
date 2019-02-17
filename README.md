@@ -32,42 +32,43 @@ Simple Swift Debug Logger inspired by [this medium post](https://medium.com/@sau
 ## Code to create the above logging:
 
 ```swift
-func logInProduction() {
-// This should only be used when debugging in production!
-Log.logProduction("This log always prints!")
-}
+    func logInProduction() {
+        // This should only be used when debugging in production!
+        Log.logProduction("This log always prints!")
+    }
 
-func trySomething() {
-do {
-// Something that might throw an error
-let _ = try String(contentsOfFile: "")
-} catch let error {
-Log.logError(error.localizedDescription)
-}
-}
+    func trySomething() {
+        do {
+        // Something that might throw an error
+            let _ = try String(contentsOfFile: "")
+        } catch let error {
+            Log.logError(error.localizedDescription)
+        }
+    }
 
-func makeApiCall() {
-let json: [String: Any] = [
-"userId": 1,
-"id": 1,
-"title": "delectus aut autem"
-]
-Log.logDebug(json)
-}
+    func makeApiCall() {
+        let json: [String: Any] = [
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem"
+        ]
 
-func doSomethingWith(optional: String?) {
-guard let string = optional else {
-Log.logWarning("Optional is nil!")
-return
-}
-}
+        Log.logDebug(json)
+    }
 
-func doSomethingReallyImportant(shouldCrash: Bool) {
-if shouldCrash {
-Log.logSevere("Crashing for some reason")
-fatalError()
-}
-}
+    func doSomethingWith(optional: String?) {
+        guard let string = optional else {
+            Log.logWarning("Optional is nil!")
+            return
+        }
+    }
+
+    func doSomethingReallyImportant(shouldCrash: Bool) {
+        if shouldCrash {
+            Log.logSevere("Crashing for some reason")
+            fatalError()
+        }
+    }
 ```
 
 
