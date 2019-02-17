@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SwiftDebugLog_Example' do
+  pod 'SwiftDebugLog', :path => '../'
+
+  target 'SwiftDebugLog_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
