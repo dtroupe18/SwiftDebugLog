@@ -95,7 +95,7 @@ it, simply add the following line to your Podfile:
 pod 'SwiftDebugLog'
 ```
 
-or copy and paste [Log.swift](https://github.com/dtroupe18/SwiftDebugLogger/blob/master/Log.swift) into your project!
+or copy and paste [Log.swift](https://github.com/dtroupe18/SwiftDebugLog/blob/master/SwiftDebugLog/Classes/Log.swift) into your project! Using this method prevents you from having to `import SwiftDebugLog` in your files and it also globally wraps `print` into debug only.
 
 
 ## License
