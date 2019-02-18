@@ -57,6 +57,16 @@ public class Log {
         #endif
     }
 
+    public static func logJSON(_ data: Data, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+        if isLoggingEnabled {
+            if let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                Log.logDebug(dict?.asJSON ?? "nil response dict")
+            } else {
+                Log.logDebug("nil response dict")
+            }
+        }
+    }
+
     public static func logError( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             print("\(Date().toString()) \(LogEvent.error.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)")
@@ -94,5 +104,17 @@ public class Log {
 internal extension Date {
     func toString() -> String {
         return Log.dateFormatter.string(from: self as Date)
+    }
+}
+
+internal extension Dictionary {
+    var asJSON: String {
+        let invalidJson = "invalid JSON"
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return String(bytes: jsonData, encoding: String.Encoding.utf8) ?? invalidJson
+        } catch {
+            return invalidJson
+        }
     }
 }
