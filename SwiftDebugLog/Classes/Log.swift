@@ -60,7 +60,7 @@ public class Log {
     public static func logJSON(_ data: Data, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             if let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                Log.logDebug(dict?.asJSON ?? "nil response dict")
+                Log.logDebug(dict?.asJSON ?? "nil response dict", filename: filename, line: line, funcName: funcName)
             } else {
                 Log.logDebug("nil response dict")
             }
