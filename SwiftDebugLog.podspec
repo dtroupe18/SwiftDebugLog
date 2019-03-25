@@ -8,9 +8,12 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftDebugLog'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Lightweight Swift Debug Logger'
   s.swift_version    = '4.0'
+
+  s.dependency 'Crashlytics', '~> 3.12.0'
+  s.dependency 'Fabric', '~> 1.9.0'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -39,5 +42,4 @@ Swift library for logging errors in debug. Log statements include the filename, 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

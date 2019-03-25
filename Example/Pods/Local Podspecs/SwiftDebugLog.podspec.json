@@ -1,8 +1,17 @@
 {
   "name": "SwiftDebugLog",
-  "version": "0.1.0",
-  "summary": "A short description of SwiftDebugLog.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.3",
+  "summary": "Lightweight Swift Debug Logger",
+  "swift_version": "4.0",
+  "dependencies": {
+    "Crashlytics": [
+      "~> 3.12.0"
+    ],
+    "Fabric": [
+      "~> 1.9.0"
+    ]
+  },
+  "description": "Swift library for logging errors in debug. Log statements include the filename, line, and function call.",
   "homepage": "https://github.com/Dtroupe18/SwiftDebugLog",
   "license": {
     "type": "MIT",
@@ -13,10 +22,10 @@
   },
   "source": {
     "git": "https://github.com/Dtroupe18/SwiftDebugLog.git",
-    "tag": "0.1.0"
+    "tag": "0.1.3"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "11.0"
   },
   "source_files": "SwiftDebugLog/Classes/**/*"
 }

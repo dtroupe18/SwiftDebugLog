@@ -19,6 +19,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 public enum LogEvent: String {
     case error = "😡 "
@@ -39,6 +40,8 @@ fileprivate func productionPrint(_ object: Any) {
 }
 
 public class Log {
+    public static var logToCrashlytics: Bool = true
+
     static var dateFormat = "yyyy-MM-dd HH:mm:ss.SSSZ"
 
     static var dateFormatter: DateFormatter {
@@ -70,24 +73,36 @@ public class Log {
     public static func logError( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             print("\(Date().toString()) \(LogEvent.error.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)")
+        } else if logToCrashlytics {
+            let string = "\(Date().toString()) \(LogEvent.error.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)"
+            logToCrashlytics(string: string)
         }
     }
 
     public static func logDebug( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             print("\(Date().toString()) \(LogEvent.debug.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)")
+        } else if logToCrashlytics {
+            let string = "\(Date().toString()) \(LogEvent.error.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)"
+            logToCrashlytics(string: string)
         }
     }
 
     public static func logWarning( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             print("\(Date().toString()) \(LogEvent.warning.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)")
+        } else if logToCrashlytics {
+            let string = "\(Date().toString()) \(LogEvent.warning.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)"
+            logToCrashlytics(string: string)
         }
     }
 
     public static func logSevere( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         if isLoggingEnabled {
             print("\(Date().toString()) \(LogEvent.severe.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)")
+        } else if logToCrashlytics {
+            let string = "\(Date().toString()) \(LogEvent.severe.rawValue)[\(sourceFileName(filePath: filename))] line: \(line) \(funcName) -> \(object)"
+            logToCrashlytics(string: string)
         }
     }
 
@@ -98,6 +113,11 @@ public class Log {
     private class func sourceFileName(filePath: String) -> String {
         let components = filePath.components(separatedBy: "/")
         return components.isEmpty ? "" : components.last!
+    }
+
+    class func logToCrashlytics(string: String) {
+        // https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#add_custom_log_messages
+        CLSLogv("%@", getVaList([string]))
     }
 }
 
