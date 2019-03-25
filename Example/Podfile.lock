@@ -1,16 +1,30 @@
 PODS:
-  - SwiftDebugLog (0.1.0)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - SwiftDebugLog (0.1.5):
+    - Crashlytics (~> 3.12.0)
+    - Fabric (~> 1.9.0)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.12.0)
+  - Fabric (~> 1.9.0)
   - SwiftDebugLog (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
 
 EXTERNAL SOURCES:
   SwiftDebugLog:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftDebugLog: b0581cd0e4b616e51275ea3fcc36dd5642cc1efd
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  SwiftDebugLog: 128a8910d816b375856960fe996102605346bde0
 
-PODFILE CHECKSUM: 339ac74aadddf3d84e027d83d934fc2ede5a4a95
+PODFILE CHECKSUM: 8b3b0bd304deae3adc046bd31c7bd69ed3bab662
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
